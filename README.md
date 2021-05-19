@@ -441,18 +441,16 @@ const rewire = require("rewire");
 var myModule = rewire("../path/to/custom/module");
 ```
 
-## Depreciation Note
-
-1. In the next section I use sinon.sandbox.create() but it has been depreciated, please use sinon.createSandbox() instead, everything else remains the same.
-
-2. If you are using mongoose 5.6+, please update the app.js / other places you use mongoose.connect() and wrap in the following if check:
-
-if(mongoose.connection.readyState == 0){
-mongoose.connect(db());
-}
-The new mongoose throws an error if there is already a connection, this will update the app to only connect if you are not already connected.
+## Testing an app
 
 **Exemples in ./lib-v3**
+
+_user.test.js_:
+
+- Users.get()
+- Users.delete()
+- Users.create()
+- Users.update()
 
 ## Dependancies
 
