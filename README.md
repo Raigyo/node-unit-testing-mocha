@@ -6,7 +6,7 @@ _May 2021_
 
 UT using Mocha, Chai.
 
-![Node Logo](_readme-img/node-js-logo.jpg)
+![Node Logo](_readme-img/mocha-chai-node.png)
 
 ## Overview
 
