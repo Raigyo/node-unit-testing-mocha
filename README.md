@@ -1,12 +1,11 @@
-# Node.js - Unit Testing
+# Node.js - Unit Testing using Mocha ☕️, Chai and SinonJS.
 
 _May 2021_
 
 > 🔨 Node Unit testing. From udemy '[Node.js Unit Testing In-Depth (Murtez Alrohani)](https://www.udemy.com/course/nodejs-unit-testing-in-depth)'.
 
-UT using Mocha, Chai.
-
-![Node Logo](_readme-img/mocha-chai-node.png)
+![Node Mocha Chai Logos](_readme-img/mocha-chai-node.png)
+![Sinon Logo](_readme-img/sinon.jpg)
 
 ## Overview
 
