@@ -5,11 +5,11 @@ _May 2021_
 > 🔨 Node Unit testing. From udemy '[Node.js Unit Testing In-Depth (Murtez Alrohani)](https://www.udemy.com/course/nodejs-unit-testing-in-depth)'.
 
 <h1 align="center">
-    <img src="img_readme/mocha-chai-node.png">
+    <img src="_readme-img/mocha-chai-node.png">
 </h1>
 
 <h1 align="center">
-    <img src="img_readme/sinon.jpg">
+    <img src="_readme-img/sinon.jpg">
 </h1>
 
 ## Overview
