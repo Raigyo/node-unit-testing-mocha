@@ -32,6 +32,8 @@ We use double testing to isolate the code we are testing or wanting to analyze. 
 
 `mocha my-file.js`
 
+**Exemples in ./lib**
+
 ```js
 const assert = require("assert");
 
@@ -184,6 +186,8 @@ Using cross-env
 
 ### Use with a file to test
 
+**Exemples in ./lib-v2**
+
 _demo.js_
 
 ```js
@@ -246,6 +250,8 @@ describe("demo", () => {
 
 ### Use with a promise
 
+**Exemples in ./lib-v2**
+
 _demo.js_
 
 ```js
@@ -297,6 +303,8 @@ describe("demo", () => {
 
 ### Spies
 
+**Exemples in ./lib-v2**
+
 Spy is recording all of the activities of a function and we can validate the returned value of it, we can verify the arguments, throws exceptions and so on.
 
 _demo.js_
@@ -338,6 +346,8 @@ describe("demo", () => {
 ```
 
 ### Stubs
+
+**Exemples in ./lib-v2**
 
 A test stub is a function or object that replaces the actual behavior of a module with a fixed response. The stub can only return the fixed response it was programmed to return.
 
@@ -419,11 +429,46 @@ describe("demo", () => {
 });
 ```
 
+Note:
+
+Please remember to use _var_ instead of _const_ when using rewire to import a module, it's easy to miss when you use const everything at the top of your code.
+
+This is because rewire will inject the rewired versions, and we reset that during teardown. It's ok to use const on requiring rewire itself, but use var for everything else.
+
+```js
+const rewire = require("rewire");
+
+var myModule = rewire("../path/to/custom/module");
+```
+
+## Depreciation Note
+
+1. In the next section I use sinon.sandbox.create() but it has been depreciated, please use sinon.createSandbox() instead, everything else remains the same.
+
+2. If you are using mongoose 5.6+, please update the app.js / other places you use mongoose.connect() and wrap in the following if check:
+
+if(mongoose.connection.readyState == 0){
+mongoose.connect(db());
+}
+The new mongoose throws an error if there is already a connection, this will update the app to only connect if you are not already connected.
+
+**Exemples in ./lib-v3**
+
 ## Dependancies
 
 - [mocha](https://www.npmjs.com/package/mocha): Simple, flexible, fun JavaScript test framework for Node.js & The Browser ☕️.
 
 `mocha i -g mocha`
+
+- [express](https://www.npmjs.com/package/express): Fast, unopinionated, minimalist web framework for node.
+
+`npm i express`
+
+- [mongoose](https://www.npmjs.com/package/mongoose): Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Mongoose supports both promises and callbacks.
+
+`npm i mongoose`
+
+## Dev dependancies
 
 - [chai](https://www.npmjs.com/package/chai): Chai is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework.
 
