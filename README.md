@@ -455,6 +455,62 @@ _user.test.js_:
 - Users.delete()
 - Users.create()
 - Users.update()
+- Users.resetPassword()
+
+```batch
+  users
+    get
+      ✓ should check for an id
+      ✓ should call findUserById with id and return result
+      ✓ should catch error if there is one
+    delete user
+      ✓ should check for an id using return
+      ✓ should check for error using eventually
+      ✓ should call User.remove
+    create user
+      ✓ should reject invalid args
+      ✓ should call User with new
+      ✓ should save the user
+      ✓ should call mailer with email and name
+      ✓ should reject errors
+    update user
+      ✓ should find user by id
+      ✓ should call user.save
+      ✓ should reject if there is an error
+    reset password
+      ✓ should check for email
+      ✓ should call sendPasswordResetEmail
+```
+
+_mailer.test.js_:
+
+- sendWelcomeEmail()
+- sendPasswordResetEmail()
+- sendEmail()
+
+```batch
+  mailer
+    sendWelcomeEmail
+      ✓ should check for email and name
+      ✓ should call sendEmail with email and message
+    sendPasswordResetEmail
+      ✓ should check for email
+      ✓ should call sendEmail with email and message
+    sendEmail
+      ✓ should check for email and body
+      ✓ should call sendEmail with email and message (101ms)
+```
+
+_utils.test.js_:
+
+- getHash()
+
+```batch
+  utils
+    ✓ should return null if invalid string is passed
+    ✓ should get secret from config
+    ✓ should call crypto with correct settings and return hash
+```
 
 ## Dependancies
 
@@ -492,7 +548,7 @@ _user.test.js_:
 
 `npm install --save-dev sinon`
 
-- [rewire](https://www.npmjs.com/package/rewire): rewire adds a special setter and getter to modules so you can modify their behaviour for better unit testing. You may.
+- [rewire](https://www.npmjs.com/package/rewire): rewire adds a special setter and getter to modules so you can modify their behaviour for better unit testing.
 
 `npm install --save-dev rewire`
 
