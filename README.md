@@ -12,6 +12,10 @@ _May 2021_
     <img src="_readme-img/sinon.jpg">
 </h1>
 
+<h1 align="center">
+    <img src="_readme-img/capture-01.png">
+</h1>
+
 ## Overview
 
 ### Test doubles
