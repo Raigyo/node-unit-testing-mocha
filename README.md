@@ -614,7 +614,7 @@ CLASSES: _order.test.js_:
 
 - [Sinon.JS Assertions for Chai](https://www.chaijs.com/plugins/sinon-chai/): Sinon–Chai provides a set of custom assertions for using the Sinon.JS spy, stub, and mocking framework with the Chai assertion library. You get all the benefits of Chai with all the powerful tools of Sinon.JS.
 
-`npm i -D sinon`
+`npm i -D sinon-chai`
 
 - [rewire](https://www.npmjs.com/package/rewire): rewire adds a special setter and getter to modules so you can modify their behaviour for better unit testing.
 
