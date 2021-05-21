@@ -1,4 +1,4 @@
-# Node.js - Unit Testing using Mocha ☕️, Chai and SinonJS.
+# Behavior-driven development (BDD) - Node.js - Unit Testing using Mocha ☕️, Chai and SinonJS.
 
 _May 2021_
 
@@ -17,6 +17,22 @@ _May 2021_
 </h1>
 
 ## Overview
+
+### Behavior-driven development (BDD)
+
+Mocha.js provides a variety of interfaces for defining test suites, hooks, and individual tests, including TSS, Exports, QUnit, and Require. The default interface is BDD.
+
+Behavior-driven development (BDD) aims to help developers build software that is predictable, resilient to changes, and not error-prone. It evolved from test-driven development (TDD), which requires you to:
+
+- Write tests for the required software functionality
+- Run the tests for the software functionality
+- Implement the software functionality
+- Fix bugs and refactor until all tests pass
+- Repeat the cycle for any new functionality
+
+The main difference between TDD and BDD is that BDD calls for writing test cases in a shared language to simplify communication between technical and nontechnical stakeholders, such as developers, QA teams, and business leaders.
+
+The main difference between TDD and BDD is that BDD calls for writing test cases in a shared language to simplify communication between technical and nontechnical stakeholders, such as developers, QA teams, and business leaders.
 
 ### Test doubles
 
@@ -512,6 +528,8 @@ _utils.test.js_:
     ✓ should call crypto with correct settings and return hash
 ```
 
+_app.test.js_:
+
 ## Dependancies
 
 - [mocha](https://www.npmjs.com/package/mocha): Simple, flexible, fun JavaScript test framework for Node.js & The Browser ☕️.
@@ -552,10 +570,15 @@ _utils.test.js_:
 
 `npm install --save-dev rewire`
 
+- [supertest](https://www.npmjs.com/package/supertest): The motivation with this module is to provide a high-level abstraction for testing HTTP, while still allowing you to drop down to the lower-level API provided by superagent..
+
+`npm install supertest --save-dev`
+
 ## Useful links
 
 - [Node assert](https://nodejs.org/api/assert.html)
 - [Mocha](https://mochajs.org/)
+- [Mocha.js, the JavaScript test framework: A tutorial](https://blog.logrocket.com/a-quick-and-complete-guide-to-mocha-testing-d0e0ea09f09d/)
 - [Chai](https://www.chaijs.com/)
 - [Chai Plugins](https://www.chaijs.com/plugins/)
 - [Sinon.js](https://sinonjs.org/)
