@@ -16,6 +16,10 @@ _May 2021_
     <img src="_readme-img/capture-01.png">
 </h1>
 
+<h1 align="center">
+    <img src="_readme-img/capture-02.png">
+</h1>
+
 ## Overview
 
 ### Behavior-driven development (BDD)
@@ -32,7 +36,7 @@ Behavior-driven development (BDD) aims to help developers build software that is
 
 The main difference between TDD and BDD is that BDD calls for writing test cases in a shared language to simplify communication between technical and nontechnical stakeholders, such as developers, QA teams, and business leaders.
 
-The main difference between TDD and BDD is that BDD calls for writing test cases in a shared language to simplify communication between technical and nontechnical stakeholders, such as developers, QA teams, and business leaders.
+Another difference is that in TDD, test are written first and the test has to fail. Then The code is written to make the test pass.
 
 ### Test doubles
 
@@ -40,13 +44,13 @@ We use double testing to isolate the code we are testing or wanting to analyze. 
 
 ![schema test doubles](_readme-img/types-of-test-doubles.gif)
 
-- Test stub — used for providing the tested code with "indirect input".
-- Mock object — used for verifying "indirect output" of the tested code, by first defining the expectations before the tested code is executed.
+- Test stub — used for providing the tested code with "indirect input". Stubbing, like mocking, means creating a stand-in, but a stub only mocks the behavior, but not the entire object. This is used when your implementation only interacts with a certain behavior of the object.
+- Mock object — used for verifying "indirect output" of the tested code, by first defining the expectations before the tested code is executed. Mocking means creating a fake version of an external or internal service that can stand in for the real one, helping your tests run more quickly and more reliably. When your implementation interacts with an object’s properties, rather than its function or behavior, a mock can be used.
 - Test spy — used for verifying "indirect output" of the tested code, by asserting the expectations afterwards, without having defined the expectations before the tested code is executed. It helps in recording information about the indirect object created.
 - Fake object — used as a simpler implementation, e.g. using an in-memory database in the tests instead of doing real database access.
 - Dummy object — used when a parameter is needed for the tested method but without actually needing to use the parameter.
 
-### Mocha
+### Mocha: exemple of use
 
 `sudo npm i -g mocha`
 
@@ -465,7 +469,7 @@ var myModule = rewire("../path/to/custom/module");
 
 **Exemples in ./lib-v3**
 
-_user.test.js_:
+CRUD: _user.test.js_:
 
 - Users.get()
 - Users.delete()
@@ -498,7 +502,7 @@ _user.test.js_:
       ✓ should call sendPasswordResetEmail
 ```
 
-_mailer.test.js_:
+MAILER: _mailer.test.js_:
 
 - sendWelcomeEmail()
 - sendPasswordResetEmail()
@@ -517,7 +521,7 @@ _mailer.test.js_:
       ✓ should call sendEmail with email and message (101ms)
 ```
 
-_utils.test.js_:
+UTILS: _utils.test.js_:
 
 - getHash()
 
@@ -528,7 +532,53 @@ _utils.test.js_:
     ✓ should call crypto with correct settings and return hash
 ```
 
-_app.test.js_:
+Routes: _app.test.js_:
+
+- get: _/_
+- post: _/user/:id_
+- delete: _/user/:id_
+- handleError()
+
+```batch
+  app
+    GET /
+      ✓ should get /
+    POST /user
+      ✓ should call user.create
+      ✓ should call handleError on error
+    DELETE /user/:id
+      ✓ should call auth check function and users.delete on success
+      ✓ should call handleError on error
+    handleError
+      ✓ should check error instance and format message
+      ✓ should return object without changing it if not instance of error
+```
+
+MODELS: _./models/user.test.js_:
+
+- mongoose required fields
+- mongoose optionnal field
+
+```batch
+  User model
+    ✓ should return error fields required ares are missing
+    ✓ should have optional age field
+```
+
+CLASSES: _order.test.js_:
+
+- class Order instance
+- Method save
+- Method cancel
+- Prototype ship
+
+```batch
+  order
+    ✓ should create instance or Order and calculate total + shipping
+    ✓ should update status to active and return order details
+    ✓ should cancel an order, update status and set shipping and total to zero
+    ✓ should update status to shipped
+```
 
 ## Dependancies
 
@@ -548,31 +598,45 @@ _app.test.js_:
 
 - [chai](https://www.npmjs.com/package/chai): Chai is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework.
 
-`npm install --save-dev chai`
+`npm i -D chai`
 
 - [cross-env](https://www.npmjs.com/package/cross-env): cross-env makes it so you can have a single command without worrying about setting or using the environment variable properly for the platform.
 
-`npm install --save-dev cross-env`
+`npm i -D cross-env`
 
 - [Chai Assertions for Promises](https://www.chaijs.com/plugins/chai-as-promised/): Chai as Promised extends Chai with a fluent language for asserting facts about promises.
 
-`npm install --save-dev chai-as-promised`
+`npm i -D chai-as-promised`
 
 - [sinon](https://www.npmjs.com/package/sinon): Standalone and test framework agnostic JavaScript test spies, stubs and mocks.
 
-`npm install --save-dev sinon`
+`npm i -D sinon`
 
 - [Sinon.JS Assertions for Chai](https://www.chaijs.com/plugins/sinon-chai/): Sinon–Chai provides a set of custom assertions for using the Sinon.JS spy, stub, and mocking framework with the Chai assertion library. You get all the benefits of Chai with all the powerful tools of Sinon.JS.
 
-`npm install --save-dev sinon`
+`npm i -D sinon`
 
 - [rewire](https://www.npmjs.com/package/rewire): rewire adds a special setter and getter to modules so you can modify their behaviour for better unit testing.
 
-`npm install --save-dev rewire`
+`npm i -D rewire`
 
-- [supertest](https://www.npmjs.com/package/supertest): The motivation with this module is to provide a high-level abstraction for testing HTTP, while still allowing you to drop down to the lower-level API provided by superagent..
+- [supertest](https://www.npmjs.com/package/supertest): The motivation with this module is to provide a high-level abstraction for testing HTTP, while still allowing you to drop down to the lower-level API provided by superagent.
 
-`npm install supertest --save-dev`
+`npm I -D supertest`
+
+- [istanbuljs/nyc](https://github.com/istanbuljs/nyc): Istanbul instruments your ES5 and ES2015+ JavaScript code with line counters, so that you can track how well your unit-tests exercise your codebase..
+
+`npm i -D nyc`
+
+```json
+  "scripts": {
+    "coverage": "cross-env NODE_ENV=development nyc --reporter=text npm test"
+  },
+```
+
+`npm run coverage`
+
+NB: each file to test need its ".test." version otherwise it will not be listed in the report.
 
 ## Useful links
 
